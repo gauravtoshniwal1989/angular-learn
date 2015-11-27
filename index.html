@@ -4,11 +4,13 @@
 	</head>
 
 	<body>
-		<div ng-app="mathApp" ng-controller="MathController">
-			{{greeting}} World!
+		<div ng-app="mathApp">
+			<div ng-view></div>
 		</div>
-		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
 		<script src="app/app.js"></script>
 		<script src="app/controllers/MathController.js"></script>
+		<script src="app/controllers/AdditionController.js"></script>
 	</body>
 
