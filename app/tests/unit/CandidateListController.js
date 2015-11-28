@@ -8,9 +8,20 @@ describe('CandidateListController', function() {
     $controller = _$controller_;
   }));
 
-  it('sets the strength to "strong" if the password length is >8 chars', function() {
-    var $scope = {};
-    var controller = $controller('CandidateListController', { $scope: $scope });
-    expect($scope.candidates.length).toEqual(0);
-  });
+  describe("Interacting with the input box", function() {
+    beforeEach(function() {
+      $scope = {};
+      controller = $controller('CandidateListController', { $scope: $scope });      
+    })
+    it('Initial length of candidates array is zero', function() {
+      expect($scope.candidates.length).toEqual(0);
+      $scope.addCandidate("Gaurav");
+      expect($scope.candidates.length).toEqual(1);
+    });
+    it('addCandidate() should increase the size of the candidates array just once', function() {
+      var number_of_candidates = $scope.candidates.length;
+      $scope.addCandidate("Gaurav");
+      expect($scope.candidates.length).toEqual(number_of_candidates+1);
+    });
+  })
 });

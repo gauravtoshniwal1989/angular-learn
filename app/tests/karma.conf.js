@@ -5,7 +5,7 @@ module.exports = function(config) {
 
     basePath : "../../",
 
-    logLevel : config.LOG_DEBUG,
+    // logLevel : config.LOG_DEBUG,
 
     files: [
         'bower_components/angular/angular.js',
