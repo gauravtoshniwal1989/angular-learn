@@ -1,16 +1,25 @@
 <html>
 	<head>
 		<title>Angular App</title>
+		<style type="text/css">
+			.selected-true {
+				text-decoration: line-through;
+			}
+		</style>
 	</head>
 
 	<body>
-		<div ng-app="mathApp">
-			<div ng-view></div>
+		<div ng-app="employeeApp" ng-controller="CandidateListController">
+			<input ng-model="candidate_name"/><button ng-click="addCandidate(candidate_name)">Add Candidate</button>
+			<ul>
+				<li ng-repeat="candidate in candidates" class="selected-{{candidate.selected}}">
+					<input type="checkbox" ng-model="candidate.selected">{{candidate.name}}
+				</li>
+			</ul>
 		</div>
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/angular-route/angular-route.js"></script>
 		<script src="app/app.js"></script>
-		<script src="app/controllers/MathController.js"></script>
-		<script src="app/controllers/AdditionController.js"></script>
+		<script src="app/controllers/CandidateListController.js"></script>
 	</body>
 
