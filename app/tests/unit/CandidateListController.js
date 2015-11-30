@@ -1,29 +1,26 @@
 describe('CandidateListController', function() {
   beforeEach(module('employeeApp'));
 
-  var $controller;
+  var $controller, $location, candidateStore;
 
-  beforeEach(inject(function(_$controller_){
-    // The injector unwraps the underscores (_) from around the parameter names when matching
-    $controller = _$controller_;
+  beforeEach(
+    inject(function($injector,$controller){
+      // The injector unwraps the underscores (_) from around the parameter names when matching
+      candidateStore = $injector.get('candidateStore');
+      ListController = $controller('CandidateListController');
   }));
 
   describe("Interacting with the input box", function() {
-    beforeEach(function() {
-      $scope = {};
-      controller = $controller('CandidateListController', { $scope: $scope });      
-    })
-
     it('Initial length of candidates array is zero', function() {
-      expect($scope.candidates.length).toEqual(0);
-      $scope.addCandidate("Gaurav");
-      expect($scope.candidates.length).toEqual(1);
+      expect(candidateStore.list.length).toEqual(0);
+      ListController.addCandidate("Gaurav");
+      expect(candidateStore.list.length).toEqual(1);
     });
     
-    it('addCandidate() should increase the size of the candidates array just once', function() {
-      var number_of_candidates = $scope.candidates.length;
-      $scope.addCandidate("Gaurav");
-      expect($scope.candidates.length).toEqual(number_of_candidates+1);
+    it('addCandidate() should increase the size of the candidates array in candidateStore by one', function() {
+      var number_of_candidates = candidateStore.list.length;
+      ListController.addCandidate("Gaurav");
+      expect(candidateStore.list.length).toEqual(number_of_candidates+1);
     });
   })
 });

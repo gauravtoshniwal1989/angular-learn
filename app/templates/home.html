@@ -1,0 +1,8 @@
+<input ng-model="candidate_list.candidate_name"/>
+<button id="add-candidate" ng-click="candidate_list.addCandidate(candidate_list.candidate_name)">Add Candidate</button>
+<ul>
+    <li ng-repeat="candidate in candidate_list.candidates" class="selected-{{candidate.selected}}">
+        <input type="checkbox" ng-model="candidate.selected">
+        <span ng-click="candidate_list.details(candidate.id)">{{candidate.name}}</span>
+    </li>
+</ul>

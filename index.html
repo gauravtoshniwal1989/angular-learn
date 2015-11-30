@@ -1,26 +1,22 @@
 <html>
-	<head>
-		<title>Angular App</title>
-		<style type="text/css">
-			.selected-true {
-				text-decoration: line-through;
-			}
-		</style>
-	</head>
+    <head>
+        <title>Angular App</title>
+        <style type="text/css">
+            .selected-true {
+                text-decoration: line-through;
+            }
+        </style>
+    </head>
 
-	<body ng-app="employeeApp">
-		<div ng-controller="CandidateListController">
-			<input ng-model="candidate_name"/>
-			<button id="add-candidate" ng-click="addCandidate(candidate_name)">Add Candidate</button>
-			<ul>
-				<li ng-repeat="candidate in candidates" class="selected-{{candidate.selected}}">
-					<input type="checkbox" ng-model="candidate.selected">{{candidate.name}}
-				</li>
-			</ul>
-		</div>
-		<script src="bower_components/angular/angular.js"></script>
-		<script src="bower_components/angular-route/angular-route.js"></script>
-		<script src="app/app.js"></script>
-		<script src="app/controllers/CandidateListController.js"></script>
-	</body>
+    <body ng-app="employeeApp">
+        <div ng-view>
+        </div>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/services/candidateStore.js"></script>
+        <script src="app/controllers/CandidateListController.js"></script>
+        <script src="app/controllers/CandidateDetailsController.js"></script>
+    </body>
 
